@@ -8,5 +8,6 @@ public class MunchkinApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MunchkinApplication.class, args);
+		System.out.println("run");
 	}
 }
