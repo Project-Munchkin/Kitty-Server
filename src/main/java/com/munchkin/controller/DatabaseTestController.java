@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.munchkin.service.DbTestService;
+import com.munchkin.service.DatabaseTestService;
 
 @RestController
-public class DbTestController {
+public class DatabaseTestController {
 	@Autowired
-	DbTestService dbService;
+	DatabaseTestService dbService;
 
 	@RequestMapping("/")
 	public @ResponseBody String root_test() throws Exception{  
