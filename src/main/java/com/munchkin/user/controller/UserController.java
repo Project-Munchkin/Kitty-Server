@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity leaveUserInfo(@RequestBody @Validated User user,
+    public ResponseEntity<Void> leaveUserInfo(@RequestBody @Validated User user,
                                         BindingResult bindingResult) throws BindException {
 
         if (bindingResult.hasErrors()) {
@@ -41,6 +41,6 @@ public class UserController {
         System.out.println("body_type: " + user.getBodyType());
         System.out.println("height: " + user.getHeight());
         userService.addUserInfo(user.getGender(), user.getBodyType(), user.getHeight());
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

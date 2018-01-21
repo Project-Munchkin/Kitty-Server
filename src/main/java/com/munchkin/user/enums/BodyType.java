@@ -2,13 +2,10 @@ package com.munchkin.user.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.munchkin.enums.ValueEnum;
 import com.munchkin.typehandler.IntegerValueEnumTypeHandler;
-import com.munchkin.user.deserializer.BodyTypeDeserializer;
 import org.apache.ibatis.type.MappedTypes;
 
-//@JsonDeserialize(using = BodyTypeDeserializer.class)
 public enum BodyType implements ValueEnum<Integer> {
 
     THIN(1), NORMAL(2), FAT(3);

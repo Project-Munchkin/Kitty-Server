@@ -1,15 +1,18 @@
 package com.munchkin.user.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.munchkin.user.deserializer.UserDeserializer;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
+import io.swagger.annotations.ApiModelProperty;
 
-//@JsonDeserialize(using = UserDeserializer.class)
 public class User {
 
+    @ApiModelProperty(required = true, allowableValues = "1, 2")
     private Gender gender;
+
+    @ApiModelProperty(required = true, allowableValues = "1, 2, 3")
     private BodyType bodyType;
+
+    @ApiModelProperty(required = true)
     private int height;
 
     public User() {
