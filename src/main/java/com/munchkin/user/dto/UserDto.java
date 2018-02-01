@@ -1,10 +1,10 @@
-package com.munchkin.user.domain;
+package com.munchkin.user.dto;
 
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
 import io.swagger.annotations.ApiModelProperty;
 
-public class User {
+public class UserDto {
 
     @ApiModelProperty(required = true, allowableValues = "1, 2")
     private Gender gender;
@@ -15,10 +15,10 @@ public class User {
     @ApiModelProperty(required = true)
     private int height;
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(Gender gender, BodyType bodyType, int height) {
+    public UserDto(Gender gender, BodyType bodyType, int height) {
         this.gender = gender;
         this.bodyType = bodyType;
         this.height = height;

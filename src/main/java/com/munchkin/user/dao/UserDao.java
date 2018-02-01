@@ -1,16 +1,14 @@
 package com.munchkin.user.dao;
 
-import com.munchkin.user.domain.User;
+import com.munchkin.user.dto.UserDto;
 
 import java.util.List;
 
 public interface UserDao {
 
-    String NAMESPACE = "com.munchkin.dao.UserDao.";
+    void add(UserDto userDto);
 
-    void add(User user);
-
-    List<User> getAll();
+    List<UserDto> getAll();
 
     void removeAll();
 }

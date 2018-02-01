@@ -37,6 +37,10 @@ public class MybatisConfig {
                 new BodyType.TypeHandler()
         });
 
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+        sqlSessionFactoryBean.setConfiguration(configuration);
+
         return sqlSessionFactoryBean.getObject();
     }
 }

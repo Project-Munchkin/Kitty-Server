@@ -1,7 +1,7 @@
 package com.munchkin.user.service;
 
 import com.munchkin.user.dao.UserDao;
-import com.munchkin.user.domain.User;
+import com.munchkin.user.dto.UserDto;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUserInfo(Gender gender, BodyType bodyType, int height) {
-        userDao.add(new User(gender, bodyType, height));
+        userDao.add(new UserDto(gender, bodyType, height));
     }
 }

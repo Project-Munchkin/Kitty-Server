@@ -1,6 +1,6 @@
 package com.munchkin.user.controller;
 
-import com.munchkin.user.domain.User;
+import com.munchkin.user.dto.UserDto;
 import com.munchkin.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,17 +30,17 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> leaveUserInfo(@RequestBody @Validated User user,
+    public ResponseEntity<Void> leaveUserInfo(@RequestBody @Validated UserDto userDto,
                                         BindingResult bindingResult) throws BindException {
 
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
 
-        System.out.println("gender: " + user.getGender());
-        System.out.println("body_type: " + user.getBodyType());
-        System.out.println("height: " + user.getHeight());
-        userService.addUserInfo(user.getGender(), user.getBodyType(), user.getHeight());
+        System.out.println("gender: " + userDto.getGender());
+        System.out.println("body_type: " + userDto.getBodyType());
+        System.out.println("height: " + userDto.getHeight());
+        userService.addUserInfo(userDto.getGender(), userDto.getBodyType(), userDto.getHeight());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

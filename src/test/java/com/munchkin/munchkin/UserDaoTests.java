@@ -1,7 +1,7 @@
 package com.munchkin.munchkin;
 
 import com.munchkin.user.dao.UserDao;
-import com.munchkin.user.domain.User;
+import com.munchkin.user.dto.UserDto;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
 import org.junit.Before;
@@ -25,29 +25,29 @@ public class UserDaoTests {
     @Autowired
     private UserDao userDao;
 
-    private List<User> users;
+    private List<UserDto> userDtoList;
 
     @Before
     public void setup() {
-        users = Arrays.asList(new User(Gender.MAN, BodyType.NORMAL, 182),
-                new User(Gender.WOMAN, BodyType.THIN, 158));
+        userDtoList = Arrays.asList(new UserDto(Gender.MAN, BodyType.NORMAL, 182),
+                new UserDto(Gender.WOMAN, BodyType.THIN, 158));
         userDao.removeAll();
     }
 
     @Test
     public void add() {
-        for (User user : users) {
-            userDao.add(user);
+        for (UserDto userDto : userDtoList) {
+            userDao.add(userDto);
         }
 
-        List<User> addedUsers = userDao.getAll();
+        List<UserDto> addedUserDtoList = userDao.getAll();
 
-        assertEquals(users.size(), addedUsers.size());
+        assertEquals(userDtoList.size(), addedUserDtoList.size());
 
-        for (int i = 0; i < users.size(); i++) {
-            assertEquals(users.get(i).getGender().getValue(), addedUsers.get(i).getGender().getValue());
-            assertEquals(users.get(i).getBodyType().getValue(), addedUsers.get(i).getBodyType().getValue());
-            assertEquals(users.get(i).getHeight(), addedUsers.get(i).getHeight());
+        for (int i = 0; i < userDtoList.size(); i++) {
+            assertEquals(userDtoList.get(i).getGender().getValue(), addedUserDtoList.get(i).getGender().getValue());
+            assertEquals(userDtoList.get(i).getBodyType().getValue(), addedUserDtoList.get(i).getBodyType().getValue());
+            assertEquals(userDtoList.get(i).getHeight(), addedUserDtoList.get(i).getHeight());
         }
     }
 }
