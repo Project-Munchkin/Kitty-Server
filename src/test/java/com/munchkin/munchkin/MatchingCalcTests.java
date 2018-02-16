@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -108,30 +109,78 @@ public class MatchingCalcTests {
 
     public String matchingSize (int size) {
     	String matchingSize = null;
-    	int xSmall = Math.abs(60 - size);
-    	int small = Math.abs(80 - size);
-    	int medium = Math.abs(100 - size);
-    	int large = Math.abs(120 - size);
-    	int xLarge = Math.abs(140 - size);
-    	System.out.println(xSmall);
-    	System.out.println(small);
-    	System.out.println(medium);
-    	System.out.println(large);
-    	System.out.println(xLarge);
+    	int xSmallVal = Math.abs(60 - size);
+    	int smallVal = Math.abs(80 - size);
+    	int mediumVal = Math.abs(100 - size);
+    	int largeVal = Math.abs(120 - size);
+    	int xLargeVal = Math.abs(140 - size);
+
+    	SizeVal sizeVal = new SizeVal();
+    	sizeVal.setxSmall(String.valueOf(xSmallVal));
+    	sizeVal.setSmall(String.valueOf(smallVal));
+    	sizeVal.setMedium(String.valueOf(mediumVal));
+    	sizeVal.setLarge(String.valueOf(largeVal));
+    	sizeVal.setxLarge(String.valueOf(xLargeVal));
 
     	ArrayList<Integer> list = new ArrayList<Integer>();
-    	list.add(xSmall);
-    	list.add(small);
-    	list.add(medium);
-    	list.add(large);
-    	list.add(xLarge);
-    	Integer i2 = Collections.min(list);
-    	System.out.println(i2);
-/*    	for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).equals(i2) {
-
-			}
-		}*/
-    	return matchingSize;
+    	list.add(xSmallVal);
+    	list.add(smallVal);
+    	list.add(mediumVal);
+    	list.add(largeVal);
+    	list.add(xLargeVal);
+    	Integer minVal = Collections.min(list);
+    	   try{
+		    	Object obj= sizeVal;
+		    	for (Field field : obj.getClass().getDeclaredFields()){
+		            field.setAccessible(true);
+		            Object value=field.get(obj);
+		            if (minVal == Integer.parseInt(value.toString())){
+		            	matchingSize = field.getName();
+		            }
+		        }
+    	   }catch (Exception e){
+	            e.printStackTrace();
+	        }
+    	   return matchingSize;
     }
+
+    public class SizeVal {
+        private String xSmall;
+        private String small;
+        private String medium;
+        private String large;
+        private String xLarge;
+
+		public String getxSmall() {
+			return xSmall;
+		}
+		public void setxSmall(String xSmall) {
+			this.xSmall = xSmall;
+		}
+		public String getSmall() {
+			return small;
+		}
+		public void setSmall(String small) {
+			this.small = small;
+		}
+		public String getMedium() {
+			return medium;
+		}
+		public void setMedium(String medium) {
+			this.medium = medium;
+		}
+		public String getLarge() {
+			return large;
+		}
+		public void setLarge(String large) {
+			this.large = large;
+		}
+		public String getxLarge() {
+			return xLarge;
+		}
+		public void setxLarge(String xLarge) {
+			this.xLarge = xLarge;
+		}
+    }
+
 }
