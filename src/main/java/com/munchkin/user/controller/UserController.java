@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> leaveUserInfo(@RequestBody @Validated UserDto userDto,
+    public ResponseEntity<Void> leaveUserInfo(@ModelAttribute @Validated UserDto userDto,
                                         BindingResult bindingResult) throws BindException {
 
         if (bindingResult.hasErrors()) {
@@ -40,7 +40,8 @@ public class UserController {
         System.out.println("gender: " + userDto.getGender());
         System.out.println("body_type: " + userDto.getBodyType());
         System.out.println("height: " + userDto.getHeight());
-        userService.addUserInfo(userDto.getGender(), userDto.getBodyType(), userDto.getHeight());
+        userService.addUserInfo(userDto.getGender(), userDto.getBodyType(), userDto.getHeight(),
+                userDto.getShoulder(), userDto.getArm());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

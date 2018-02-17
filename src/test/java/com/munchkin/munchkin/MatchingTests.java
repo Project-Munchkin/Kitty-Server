@@ -3,8 +3,10 @@ package com.munchkin.munchkin;
 import com.munchkin.product.dto.ProductDto;
 import com.munchkin.product.service.ProductService;
 import com.munchkin.user.dto.UserDto;
+import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
+import com.munchkin.user.enums.Shoulder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,11 +26,22 @@ public class MatchingTests {
     @Autowired
     private ProductService productService;
 
-    private UserDto user;
+    private UserDto user1;
+    private UserDto user2;
+    private UserDto user3;
 
     @Before
     public void setup() {
-        user = new UserDto(Gender.MAN, BodyType.NORMAL, 174);
+        user1 = new UserDto(Gender.MAN, BodyType.NORMAL, 174, Shoulder.NARROW, Arm.SHORT);
+        user2 = new UserDto(Gender.MAN, BodyType.NORMAL, 165, Shoulder.NORMAL, Arm.NORMAL);
+        user3 = new UserDto(Gender.WOMAN, BodyType.THIN, 174, Shoulder.BROAD, Arm.LONG);
+    }
+
+    @Test
+    public void size() {
+        System.out.println(user1.getSize());
+        System.out.println(user2.getSize());
+        System.out.println(user3.getSize());
     }
 
     @Test

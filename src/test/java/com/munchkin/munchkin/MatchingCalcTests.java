@@ -3,8 +3,10 @@ package com.munchkin.munchkin;
 import com.munchkin.product.dto.ProductDto;
 import com.munchkin.product.service.ProductService;
 import com.munchkin.user.dto.UserDto;
+import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
+import com.munchkin.user.enums.Shoulder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +33,7 @@ public class MatchingCalcTests {
 
     @Before
     public void setup() {
-        user = new UserDto(Gender.MAN, BodyType.NORMAL, 174);
+        user = new UserDto(Gender.MAN, BodyType.NORMAL, 174, Shoulder.NORMAL, Arm.SHORT);
     }
 
     @Test

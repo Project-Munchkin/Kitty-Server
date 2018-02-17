@@ -1,7 +1,9 @@
 package com.munchkin;
 
+import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
+import com.munchkin.user.enums.Shoulder;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandler;
@@ -34,7 +36,9 @@ public class MybatisConfig {
                         .getResources("classpath:com/munchkin/mapper/*.xml"));
         sqlSessionFactoryBean.setTypeHandlers(new TypeHandler[]{
                 new Gender.TypeHandler(),
-                new BodyType.TypeHandler()
+                new BodyType.TypeHandler(),
+                new Shoulder.TypeHandler(),
+                new Arm.TypeHandler()
         });
 
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();

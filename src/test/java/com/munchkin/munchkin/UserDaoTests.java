@@ -2,8 +2,10 @@ package com.munchkin.munchkin;
 
 import com.munchkin.user.dao.UserDao;
 import com.munchkin.user.dto.UserDto;
+import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
+import com.munchkin.user.enums.Shoulder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +31,8 @@ public class UserDaoTests {
 
     @Before
     public void setup() {
-        userDtoList = Arrays.asList(new UserDto(Gender.MAN, BodyType.NORMAL, 182),
-                new UserDto(Gender.WOMAN, BodyType.THIN, 158));
+        userDtoList = Arrays.asList(new UserDto(Gender.MAN, BodyType.NORMAL, 182, Shoulder.NARROW, Arm.LONG),
+                new UserDto(Gender.WOMAN, BodyType.THIN, 158, Shoulder.NARROW, Arm.NORMAL));
         userDao.removeAll();
     }
 
