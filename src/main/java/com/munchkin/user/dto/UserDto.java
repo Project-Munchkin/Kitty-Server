@@ -1,5 +1,11 @@
 package com.munchkin.user.dto;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+
+import com.munchkin.munchkin.MatchingCalcTests.SizeVal;
+import com.munchkin.product.dto.SizeDto;
 import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
 import com.munchkin.user.enums.Gender;
@@ -143,7 +149,7 @@ public class UserDto {
                 break;
         }
 
-        if (score < 70) {
+/*        if (score < 70) {
             return "XS";
         } else if (score < 90) {
             return "S";
@@ -153,6 +159,46 @@ public class UserDto {
             return "L";
         } else {
             return "XL";
-        }
+        }*/
+        return matchingSize(score);
+    }
+
+    public String matchingSize (int size) {
+    	String matchingSize = null;
+    	int xSmallVal = Math.abs(60 - size);
+    	int smallVal = Math.abs(80 - size);
+    	int mediumVal = Math.abs(100 - size);
+    	int largeVal = Math.abs(120 - size);
+    	int xLargeVal = Math.abs(140 - size);
+
+    	SizeDto sizeVal = new SizeDto();
+    	sizeVal.setXS(String.valueOf(xSmallVal));
+    	sizeVal.setS(String.valueOf(smallVal));
+    	sizeVal.setM(String.valueOf(mediumVal));
+    	sizeVal.setL(String.valueOf(largeVal));
+    	sizeVal.setXL(String.valueOf(xLargeVal));
+
+    	ArrayList<Integer> list = new ArrayList<Integer>();
+    	list.add(xSmallVal);
+    	list.add(smallVal);
+    	list.add(mediumVal);
+    	list.add(largeVal);
+    	list.add(xLargeVal);
+    	Integer minVal = Collections.min(list);
+    	   try{
+		    	Object obj= sizeVal;
+		    	for (Field field : obj.getClass().getDeclaredFields()){
+		            field.setAccessible(true);
+		            Object value=field.get(obj);
+		            	if (minVal == Integer.parseInt(value.toString())){
+		            		matchingSize = field.getName();
+		            	}
+		        }
+    	   }catch(NumberFormatException e){
+    		   System.out.println("여기는 안들어오겠지");
+    	   }catch (Exception e){
+	            e.printStackTrace();
+	        }
+    	   return matchingSize;
     }
 }

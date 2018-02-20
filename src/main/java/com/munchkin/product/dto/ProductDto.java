@@ -2,6 +2,8 @@ package com.munchkin.product.dto;
 
 import com.munchkin.user.enums.Gender;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 public class ProductDto {
@@ -9,8 +11,13 @@ public class ProductDto {
     private int productSeq;
     private String productNumber;
     private String productName;
+
+    @ApiModelProperty(required = true)
     private Gender gender;
+
+    @ApiModelProperty(required = true)
     private int category;
+ 
     private String size;
     private int totalLength;
     private int shoulder;
@@ -25,6 +32,7 @@ public class ProductDto {
     private String appLogo;
     private String webLogo;
 
+    @ApiModelProperty(required = true)
     private String brandName;
 
     public ProductDto() {}

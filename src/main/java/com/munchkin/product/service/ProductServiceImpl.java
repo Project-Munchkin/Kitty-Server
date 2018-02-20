@@ -40,4 +40,9 @@ public class ProductServiceImpl implements ProductService {
 
         return shirtsByBrand;
     }
+
+	@Override
+	public List<ProductDto> getByCategory(ProductDto product) {
+		return productDao.getByCategory(product);
+	}
 }

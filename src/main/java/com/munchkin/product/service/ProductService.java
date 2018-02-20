@@ -8,4 +8,5 @@ import java.util.Map;
 public interface ProductService {
 
     Map<String, List<ProductDto>> getAllShirtsByBrand();
+    List<ProductDto> getByCategory(ProductDto product);
 }

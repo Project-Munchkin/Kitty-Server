@@ -134,12 +134,19 @@ public class MatchingCalcTests {
     	   try{
 		    	Object obj= sizeVal;
 		    	for (Field field : obj.getClass().getDeclaredFields()){
+		    		System.out.println(field.getName());
 		            field.setAccessible(true);
 		            Object value=field.get(obj);
-		            if (minVal == Integer.parseInt(value.toString())){
-		            	matchingSize = field.getName();
-		            }
+		            System.out.println(value.toString());
+		            //if (field.getType().equals(value.getClass())){
+		            	if (minVal == Integer.parseInt(value.toString())){
+		            		matchingSize = field.getName();
+		            	}
+		            //}
+		            
 		        }
+    	   }catch(NumberFormatException e){
+    		   System.out.println("여기는 안들어오겠지");
     	   }catch (Exception e){
 	            e.printStackTrace();
 	        }
@@ -183,6 +190,18 @@ public class MatchingCalcTests {
 		public void setxLarge(String xLarge) {
 			this.xLarge = xLarge;
 		}
+		@Override
+		public String toString() {
+			return "1";
+		}
+		
+		
     }
 
+	@Override
+	public String toString() {
+		return "MatchingCalcTests [productService=" + productService + ", user=" + user + "]";
+	}
+
+    
 }
