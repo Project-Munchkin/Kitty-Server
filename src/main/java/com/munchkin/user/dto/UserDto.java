@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.munchkin.munchkin.MatchingCalcTests.SizeVal;
 import com.munchkin.product.dto.SizeDto;
 import com.munchkin.user.enums.Arm;
 import com.munchkin.user.enums.BodyType;
