@@ -2,6 +2,7 @@ package com.munchkin.product.controller;
 
 import com.munchkin.dto.MuchfitError;
 import com.munchkin.dto.MuchfitResponse;
+import com.munchkin.product.dto.MatchingDto;
 import com.munchkin.product.dto.ProductDto;
 import com.munchkin.product.service.ProductService;
 import com.munchkin.user.dto.UserDto;
@@ -22,15 +23,15 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/match")
-    public ResponseEntity<Object> match(@ModelAttribute UserDto user, @RequestParam int category,
-    		@RequestParam String brandName) {
+    @PostMapping("/match")
+    public ResponseEntity<Object> match(@RequestBody MatchingDto matchingDto) {
         MuchfitResponse response = new MuchfitResponse();
+
         ProductDto product = new ProductDto();
-        product.setGender(user.getGender());
-        product.setCategory(category);
-        product.setBrandName(brandName);
-        String resultSize = user.getSize();
+        product.setGender(matchingDto.getGender());
+        product.setCategory(matchingDto.getCategory());
+        product.setBrandName(matchingDto.getBrandName());
+        String resultSize = matchingDto.toUserDto().size();
         try {
             Map<String, Object> data = new HashMap<>();
             data.put("size", resultSize);

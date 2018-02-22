@@ -13,19 +13,10 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class UserDto {
 
-    @ApiModelProperty(required = true)
     private Gender gender;
-
-    @ApiModelProperty(required = true)
     private BodyType bodyType;
-
-    @ApiModelProperty(required = true)
     private int height;
-
-    @ApiModelProperty(required = true)
     private Shoulder shoulder;
-
-    @ApiModelProperty(required = true)
     private Arm arm;
 
     public UserDto() {
@@ -79,7 +70,7 @@ public class UserDto {
         this.arm = arm;
     }
 
-    public String getSize() {
+    public String size() {
         int score = 100;
 
         /* 성별, 키 */
