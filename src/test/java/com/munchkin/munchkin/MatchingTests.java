@@ -39,9 +39,9 @@ public class MatchingTests {
 
     @Test
     public void size() {
-        System.out.println(user1.getSize());
-        System.out.println(user2.getSize());
-        System.out.println(user3.getSize());
+        System.out.println(user1.size());
+        System.out.println(user2.size());
+        System.out.println(user3.size());
     }
 
     @Test
