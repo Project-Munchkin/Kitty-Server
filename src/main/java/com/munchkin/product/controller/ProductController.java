@@ -37,6 +37,7 @@ public class ProductController {
             data.put("size", resultSize);
             product.setSize(resultSize);
             data.put("productInfo", productService.getByCategory(product));
+            System.out.println(productService.getByCategory(product));
             response.setData(data);
         } catch (Exception e) {
             e.printStackTrace();
