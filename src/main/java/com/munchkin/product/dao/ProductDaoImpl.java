@@ -21,4 +21,9 @@ public class ProductDaoImpl implements ProductDao {
     public List<ProductDto> getByCategory(ProductDto product) {
         return sqlSession.selectList(NAMESPACE + "getByCategory", product);
     }
+    
+    @Override
+    public String now() {
+    	return sqlSession.selectOne(NAMESPACE + "now");
+    }
 }

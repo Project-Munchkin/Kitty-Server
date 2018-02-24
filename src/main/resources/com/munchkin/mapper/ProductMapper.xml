@@ -5,4 +5,8 @@
 	<select id="getByCategory" parameterType="com.munchkin.product.dto.ProductDto" resultType="com.munchkin.product.dto.ProductDto">
 		SELECT * FROM ${brandName} WHERE category = #{category} and gender = #{gender} and size = #{size};
 	</select>
+	
+	<select id="now" resultType="java.lang.String">
+		SELECT NOW() FROM DUAL;
+	</select>
 </mapper>

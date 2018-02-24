@@ -2,6 +2,7 @@ package com.munchkin.product.controller;
 
 import com.munchkin.dto.MuchfitError;
 import com.munchkin.dto.MuchfitResponse;
+import com.munchkin.product.dao.ProductDao;
 import com.munchkin.product.dto.MatchingDto;
 import com.munchkin.product.dto.ProductDto;
 import com.munchkin.product.service.ProductService;
@@ -22,6 +23,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    
+    @Autowired
+    private ProductDao ProductDao;
 
     @PostMapping("/match")
     public ResponseEntity<Object> match(@RequestBody MatchingDto matchingDto) {
@@ -46,5 +50,10 @@ public class ProductController {
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+   @GetMapping("/now")
+    public void now() {
+    	System.out.println(ProductDao.now());
     }
 }
